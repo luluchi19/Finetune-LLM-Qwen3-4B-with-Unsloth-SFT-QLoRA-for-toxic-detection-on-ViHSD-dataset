@@ -22,8 +22,6 @@ Bình luận tiếng Việt trên mạng xã hội thường có tiếng lóng, 
 
 Dữ liệu sử dụng là **[`vominhmanh/vihsd-explainable`](https://huggingface.co/datasets/vominhmanh/vihsd-explainable)**, bản mở rộng của ViHSD với **24.048 mẫu train**, **2.672 mẫu validation** và **6.680 mẫu test**. Notebook giữ nguyên các split có sẵn: train dùng để cập nhật adapter, validation dùng để theo dõi loss, test dùng để so sánh trước và sau fine-tune.
 
-Theo dataset card, nhãn gốc kế thừa từ `htdung167/ViHSD`; phần **lời giải thích và bằng chứng được GPT-4o-mini trên Azure tạo**, sau đó được tác giả rà soát, tuyển chọn. Vì vậy, đây là dữ liệu có bổ sung giám sát từ mô hình giáo viên, không nên xem toàn bộ lời giải thích là chú giải thủ công độc lập. Dataset công bố giấy phép **CC-BY-4.0**. [Nguồn dữ liệu và xuất xứ chú giải](https://huggingface.co/datasets/vominhmanh/vihsd-explainable/blob/main/README.md).
-
 Ví dụ minh họa cấu trúc đầu ra, **không phải một dự đoán được đo trong thực nghiệm**:
 
 ```json
@@ -40,7 +38,7 @@ Ví dụ minh họa cấu trúc đầu ra, **không phải một dự đoán đ�
 
 Ở đây, mô hình gốc đã có thể đọc bình luận và trả lời theo hướng dẫn, nhưng việc tuân thủ ranh giới giữa CLEAN, OFFENSIVE và HATE vẫn cần được kiểm chứng. Fine-tune cung cấp các ví dụ nhất quán về bình luận, nhãn, lời giải thích và bằng chứng để mô hình học cách phản hồi phù hợp với bộ dữ liệu. Đây là lý do thiết kế phương pháp; kết quả F1 bên dưới cho thấy cải thiện ở **nhãn dự đoán**, còn chất lượng giải thích cần được đánh giá riêng.
 
-Checkpoint được dùng là **`unsloth/Qwen3-4B-Instruct-2507`**, thuộc họ **Qwen3-4B-Instruct-2507**. Model card chính thức mô tả đây là mô hình causal language model khoảng **4 tỷ tham số**, hỗ trợ nhiều ngôn ngữ và chỉ dùng **non-thinking mode**. Các đặc điểm đó phù hợp với mục tiêu thử nghiệm: nhận hướng dẫn tiếng Việt và sinh một câu trả lời JSON gồm nhiều trường. Quy mô 4B cũng là lựa chọn thực dụng để kết hợp với adapter và lượng tử hóa. [Model card Qwen](https://huggingface.co/Qwen/Qwen3-4B-Instruct-2507).
+Model được dùng là **`unsloth/Qwen3-4B-Instruct-2507`**, thuộc **Qwen3-4B-Instruct-2507**. Model card chính thức mô tả đây là mô hình causal language model khoảng **4 tỷ tham số**, hỗ trợ nhiều ngôn ngữ và chỉ dùng **non-thinking mode**. Các đặc điểm đó phù hợp với mục tiêu thử nghiệm: nhận hướng dẫn tiếng Việt và sinh một câu trả lời JSON gồm nhiều trường. Quy mô 4B cũng là lựa chọn thực dụng để kết hợp với adapter và lượng tử hóa.
 
 ## Phương pháp và công nghệ
 
