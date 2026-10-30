@@ -1,0 +1,42 @@
+# Local chart drafts and rendering helpers; README uses screenshots/.
+/docs/
+
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Jupyter autosaves
+.ipynb_checkpoints/
+
+# Local credentials (keep shareable configuration examples)
+.env
+.env.*
+!.env.example
+!.env.sample
+.netrc
+_netrc
+
+# Training outputs, model weights, dataset caches and experiment logs
+/checkpoints/
+/lora_model/
+/outputs/
+/qwen3_vihsd/
+/hf_cache/
+/.cache/
+wandb/
+*.safetensors
+*.pt
+*.pth
+*.log
+
+# Editor and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
